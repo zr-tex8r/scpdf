@@ -30,7 +30,7 @@ import (
 
 const (
 	packageName = "scpdf"
-	version     = "0.8.0"
+	version     = "0.8.1"
 )
 
 const dfltPdfVersion = "1.4"
@@ -91,6 +91,10 @@ func (d *Doc) autoPageSize() {
 func (d *Doc) AddPageScaled(muffler color.Color, scale float64) error {
 	if d.frozen {
 		return errFrozen()
+	} else if scale <= 0 {
+		return fmt.Errorf("illegal scale value (%.3g)", scale)
+	} else if muffler == nil {
+		return fmt.Errorf("illegal muffler value (nil)")
 	}
 	page := page{muffler: muffler, scale: scale * stdScale}
 	d.pages = append(d.pages, page)
