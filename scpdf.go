@@ -195,6 +195,11 @@ func (d *Doc) PdfBytes() (bs []byte, err error) {
 	return buf.Bytes(), nil
 }
 
+// Bytes is an alias to PdfBytes, provided to satisfy scdoc.Doc.
+func (d *Doc) Bytes() (bs []byte, err error) {
+	return d.PdfBytes()
+}
+
 // String dumps the internal information of the Doc value.
 func (d *Doc) String() string {
 	buf := make([]byte, 0, 32)
