@@ -30,7 +30,7 @@ import (
 
 const (
 	packageName = "scpdf"
-	version     = "0.8.1"
+	version     = "0.18.0"
 )
 
 const dfltPdfVersion = "1.4"
@@ -52,6 +52,11 @@ type Doc struct {
 type page struct {
 	muffler color.Color
 	scale   float64
+}
+
+// Version returns the version of this package.
+func Version() string {
+	return version
 }
 
 // NewWithSize makes a new document with the given width and height
